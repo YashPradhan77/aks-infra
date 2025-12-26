@@ -1,0 +1,18 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: vault-user-creds
+  namespace: default
+spec:
+  provider: vault
+  parameters:
+    vaultAddress: "http://vault:8200"
+    roleName: "csi-kv"
+    audience: "https://kubernetes.default.svc"
+    objects: |
+      - objectName: "user"
+        secretPath: "kv/app"
+        secretKey: "user"
+      - objectName: "password"
+        secretPath: "kv/db"
+        secretKey: "password"

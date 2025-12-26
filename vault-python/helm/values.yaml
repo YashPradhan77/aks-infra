@@ -1,0 +1,25 @@
+vault:
+  server:
+    dev:
+      enabled: true
+    service:
+      type: ClusterIP
+
+postgresql:
+  auth:
+    enabled: false
+  primary:
+    persistence:
+      enabled: false
+
+redis:
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: false
+
+clientApp:
+  image:
+    repository: vault.azurecr.io/client-app
+    tag: v1
